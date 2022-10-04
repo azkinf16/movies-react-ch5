@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import { AiOutlinePlayCircle } from "react-icons/ai";
+
+
 import requests from "../Request";
 
 function Main() {
@@ -53,59 +56,62 @@ function Main() {
         </div>
         <div class="carousel-inner relative w-full overflow-hidden">
           <div class="carousel-item active float-left w-full">
-            <div className="absolute w-3/12 h-screen bg-gradient-to-r from-black"></div>
+            <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
               class="block w-full h-screen object-cover"
               alt={movie?.title}
             />
-            <div className="absolute w-1/2 top-[25%] p-5">
-              <h1 className="text-8xl font-semibold text-white">
+            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
+              <h1 className="text-6xl font-bold text-white">
                 {movie?.title}
               </h1>
               <p className="text-white font-normal pt-5 pl-1">
                 {movie?.overview}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-10 rounded-full">
-                Watch Trailer
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2"/>
+                <span>Watch Trailer</span>
               </button>
             </div>
           </div>
           <div class="carousel-item float-left w-full">
-            <div className="absolute w-3/12 h-screen bg-gradient-to-r from-black"></div>
+            <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie2?.backdrop_path}`}
               class="block w-full h-screen object-cover"
               alt={movie2?.title}
             />
-            <div className="absolute w-1/2 top-[25%] p-5">
-              <h1 className="text-8xl font-semibold text-white w-full">
+            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
+              <h1 className="text-6xl font-bold text-white w-full">
                 {movie2?.title}
               </h1>
               <p className="text-white font-normal pl-1 pt-5">
               {movie2?.overview}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-10 rounded-full">
-                Watch Trailer
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2"/>
+                <span>Watch Trailer</span>
               </button>
             </div>
           </div>
           <div class="carousel-item float-left w-full">
-            <div className="absolute w-3/12 h-screen bg-gradient-to-r from-black"></div>
+            <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie3?.backdrop_path}`}
               class="block w-full h-screen object-cover"
               alt={movie3?.title}
             />
-            <div className="absolute w-1/2 top-[25%] p-5">
-              <h1 className="text-8xl font-semibold text-white w-full">
+            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
+              <h1 className="text-6xl font-bold text-white w-full">
                 {movie3?.title}
               </h1>
               <p className="text-white font-normal pl-1 pt-5">
               {movie3?.overview}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-10 rounded-full">
-                Watch Trailer
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2"/>
+                <span>Watch Trailer</span>
               </button>
             </div>
           </div>
