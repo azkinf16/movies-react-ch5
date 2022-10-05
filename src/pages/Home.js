@@ -1,11 +1,13 @@
 import React from 'react'
 import Main from '../components/Main'
+import Navigation from "../components/Navigation";
 
 function Home() {
   return (
-    <div>
+    <>
+        <Navigation />
         <Main />
-    </div>
+    </>
   )
 }
 
