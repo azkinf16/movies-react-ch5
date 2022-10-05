@@ -1,29 +1,72 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { AiOutlinePlayCircle } from "react-icons/ai";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+import "swiper/css";
+import "swiper/css/free-mode";
 
-import requests from "../Request";
+import { FreeMode } from "swiper";
+
+import { AiOutlinePlayCircle, AiOutlineArrowRight } from "react-icons/ai";
 
 function Main() {
-  const [movies, setMovies] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const navigate = useNavigate();
+
+  const API_URL = "https://api.themoviedb.org/3";
+  const API_KEY = "15a77a373cab542d1f99af813fbc9979";
+
+  const getTrending = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/popular`, {
+        params: {
+          api_key: API_KEY,
+          page: 1,
+        },
+      });
+      setTrending(res.data.results);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPopular = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/popular`, {
+        params: {
+          api_key: API_KEY,
+          page: 2,
+        },
+      });
+      setPopular(res.data.results);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get(requests.requestPopular)
-      .then((res) => {
-        setMovies(res.data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getTrending();
+    getPopular();
   }, []);
 
-  const movie = movies[Math.floor(Math.random() * movies.length)];
-  const movie2 = movies[Math.floor(Math.random() * movies.length)];
-  const movie3 = movies[Math.floor(Math.random() * movies.length)];
-  console.log("movies", movies);
+  console.log("popular", popular);
+
+  const truncateString = (str, num) => {
+    if (str?.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+  };
+
+  const movie = trending[Math.floor(Math.random() * trending.length)];
+  const movie2 = trending[Math.floor(Math.random() * trending.length)];
+  const movie3 = trending[Math.floor(Math.random() * trending.length)];
 
   return (
     <>
@@ -54,68 +97,104 @@ function Main() {
             aria-label="Slide 3"
           ></button>
         </div>
-        <div class="carousel-inner relative w-full overflow-hidden">
-          <div class="carousel-item active float-left w-full">
+        <div className="carousel-inner relative w-full overflow-hidden">
+          <div className="carousel-item active float-left w-full">
             <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-              class="block w-full h-screen object-cover"
+              className="block w-full h-screen object-cover"
               alt={movie?.title}
             />
-            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
-              <h1 className="text-6xl font-bold text-white">
-                {movie?.title}
-              </h1>
-              <p className="text-white font-normal pt-5 pl-1">
-                {movie?.overview}
+            <div className="absolute w-2/5 top-[25%] p-5 ml-5">
+              <h1 className="text-7xl font-bold text-white">{movie?.title}</h1>
+              <p className="text-white font-normal text-lg pt-5 pl-1">
+                {truncateString(movie?.overview, 200)}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2"/>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
               </button>
             </div>
           </div>
-          <div class="carousel-item float-left w-full">
+          <div className="carousel-item float-left w-full">
             <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie2?.backdrop_path}`}
-              class="block w-full h-screen object-cover"
+              className="block w-full h-screen object-cover"
               alt={movie2?.title}
             />
-            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
-              <h1 className="text-6xl font-bold text-white w-full">
+            <div className="absolute w-2/5 top-[25%] p-5 ml-5">
+              <h1 className="text-7xl font-bold text-white w-full">
                 {movie2?.title}
               </h1>
-              <p className="text-white font-normal pl-1 pt-5">
-              {movie2?.overview}
+              <p className="text-white font-normal text-lg pl-1 pt-5">
+                {truncateString(movie2?.overview, 200)}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2"/>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
               </button>
             </div>
           </div>
-          <div class="carousel-item float-left w-full">
+          <div className="carousel-item float-left w-full">
             <div className="absolute w-1/2 h-screen bg-gradient-to-r from-black"></div>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie3?.backdrop_path}`}
-              class="block w-full h-screen object-cover"
+              className="block w-full h-screen object-cover"
               alt={movie3?.title}
             />
-            <div className="absolute w-1/3 top-[25%] p-5 ml-5">
-              <h1 className="text-6xl font-bold text-white w-full">
+            <div className="absolute w-2/5 top-[25%] p-5 ml-5">
+              <h1 className="text-7xl font-bold text-white w-full">
                 {movie3?.title}
               </h1>
-              <p className="text-white font-normal pl-1 pt-5">
-              {movie3?.overview}
+              <p className="text-white font-normal text-lg pl-1 pt-5">
+                {truncateString(movie3?.overview, 200)}
               </p>
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2"/>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
               </button>
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-16 mx-11 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Popular Movies</h1>
+        <h6 className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer">
+          See All Movie
+          <AiOutlineArrowRight className="ml-1" />
+        </h6>
+      </div>
+      <div className="my-16 mx-6">
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          freeMode={true}
+          modules={[FreeMode]}
+          className="mySwiper"
+        >
+          {popular.map((item, id) => (
+            <SwiperSlide>
+              <div className="w-full inline-block cursor-pointer relative p-2">
+                <img
+                  className="w-full h-full rounded-lg"
+                  src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                  alt={item.title}
+                />
+                <div
+                  className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg"
+                  onClick={() => navigate(`/${item.id}`)}
+                >
+                  <div className="flex justify-center items-end h-3/4 text-center">
+                    <p className="white-space-normal text-xs md:text-sm font-bold">
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );
