@@ -1,12 +1,17 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
+  const navigate = useNavigate()
+
   return (
     <div className="flex items-center justify-between py-5 px-10 z-10 absolute w-full">
       <img
         src="https://movielist-react-app.netlify.app/static/media/Logo.eeba5c17ddf85f2145e83dd963662921.svg"
         alt="logo"
+        onClick={() => navigate("/")}
+        className="cursor-pointer"
       />
       <div className="bg-transparent border-solid border-2 border-white rounded-full hover:border-red-300 hover:ring-1 flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <input
