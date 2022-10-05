@@ -10,6 +10,7 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper";
 
 import { AiOutlinePlayCircle, AiOutlineArrowRight } from "react-icons/ai";
+import { BsStar } from "react-icons/bs";
 
 function Main() {
   const [trending, setTrending] = useState([]);
@@ -28,7 +29,6 @@ function Main() {
         },
       });
       setTrending(res.data.results);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +43,6 @@ function Main() {
         },
       });
       setPopular(res.data.results);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -55,6 +54,7 @@ function Main() {
   }, []);
 
   console.log("popular", popular);
+  console.log("trending", trending);
 
   const truncateString = (str, num) => {
     if (str?.length > num) {
@@ -110,6 +110,12 @@ function Main() {
               <p className="text-white font-normal text-lg pt-5 pl-1">
                 {truncateString(movie?.overview, 200)}
               </p>
+              <div className="flex pt-5 pl-1 text-base items-center">
+                <BsStar className="text-yellow-500" />
+                <p className="text-white ml-4">
+                  {Math.round(movie?.vote_average)} / 10
+                </p>
+              </div>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
                 <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
@@ -130,6 +136,12 @@ function Main() {
               <p className="text-white font-normal text-lg pl-1 pt-5">
                 {truncateString(movie2?.overview, 200)}
               </p>
+              <div className="flex pt-5 pl-1 text-base items-center">
+                <BsStar className="text-yellow-500" />
+                <p className="text-white ml-4">
+                  {Math.round(movie2?.vote_average)} / 10
+                </p>
+              </div>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
                 <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
@@ -150,6 +162,12 @@ function Main() {
               <p className="text-white font-normal text-lg pl-1 pt-5">
                 {truncateString(movie3?.overview, 200)}
               </p>
+              <div className="flex pt-5 pl-1 text-base items-center">
+                <BsStar className="text-yellow-500" />
+                <p className="text-white ml-4">
+                  {Math.round(movie3?.vote_average)} / 10
+                </p>
+              </div>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
                 <AiOutlinePlayCircle className="mr-2" />
                 <span>Watch Trailer</span>
