@@ -1,14 +1,16 @@
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
 
-// import Home from "./pages/Home";
+import DetailMovie from "./pages/DetailMovie";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/:id" element={<DetailMovie />}/> 
+      </Routes>
     </div>
   );
 }
