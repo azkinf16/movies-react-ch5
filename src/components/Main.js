@@ -192,7 +192,7 @@ function Main() {
           className="mySwiper"
         >
           {popular.map((item, id) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.id} onClick={() => navigate(`/${item.id}`)}>
               <div className="w-full inline-block cursor-pointer relative p-2">
                 <img
                   className="w-full h-full rounded-lg"
@@ -201,7 +201,6 @@ function Main() {
                 />
                 <div
                   className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg"
-                  onClick={() => navigate(`/${item.id}`)}
                 >
                   <div className="flex justify-center items-end h-3/4 text-center">
                     <p className="white-space-normal text-xs md:text-sm font-bold">
