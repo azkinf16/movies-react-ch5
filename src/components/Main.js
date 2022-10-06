@@ -11,6 +11,7 @@ import { FreeMode } from "swiper";
 
 import { AiOutlinePlayCircle, AiOutlineArrowRight } from "react-icons/ai";
 import { BsStar } from "react-icons/bs";
+import ButtonCategory from "./ButtonCategory";
 
 function Main() {
   const [trending, setTrending] = useState([]);
@@ -52,9 +53,6 @@ function Main() {
     getTrending();
     getPopular();
   }, []);
-
-  console.log("popular", popular);
-  console.log("trending", trending);
 
   const truncateString = (str, num) => {
     if (str?.length > num) {
@@ -192,20 +190,70 @@ function Main() {
           className="mySwiper"
         >
           {popular.map((item, id) => (
-            <SwiperSlide key={item.id} onClick={() => navigate(`/${item.id}`)}>
+            <SwiperSlide
+              key={item.id}
+              onClick={() => navigate(`/detail/${item.id}`)}
+            >
               <div className="w-full inline-block cursor-pointer relative p-2">
                 <img
-                  className="w-full h-full rounded-lg"
+                  className="w-full h-[500px] rounded-lg"
                   src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
                   alt={item.title}
                 />
-                <div
-                  className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg"
-                >
+                <div className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg">
                   <div className="flex justify-center items-end h-3/4 text-center">
-                    <p className="white-space-normal text-xs md:text-sm font-bold">
-                      {item.title}
-                    </p>
+                    <div>
+                      <p className="white-space-normal text-xs md:text-sm font-bold">
+                        {item.title}
+                      </p>
+                      <p className="white-space-normal text-xs md:text-sm font-bold mt-2">
+                        {Math.round(item.vote_average)} / 10
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div className="mt-24 mx-11 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Browser by Category</h1>
+        <h6 className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer">
+          See All Movie
+          <AiOutlineArrowRight className="ml-1" />
+        </h6>
+      </div>
+      <ButtonCategory />
+      <div className="my-16 mx-6">
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          freeMode={true}
+          modules={[FreeMode]}
+          className="mySwiper"
+        >
+          {popular.map((item, id) => (
+            <SwiperSlide
+              key={item.id}
+              onClick={() => navigate(`/detail/${item.id}`)}
+            >
+              <div className="w-full inline-block cursor-pointer relative p-2">
+                <img
+                  className="w-full h-[500px] rounded-lg"
+                  src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                  alt={item.title}
+                />
+                <div className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg">
+                  <div className="flex justify-center items-end h-3/4 text-center">
+                    <div>
+                      <p className="white-space-normal text-xs md:text-sm font-bold">
+                        {item.title}
+                      </p>
+                      <p className="white-space-normal text-xs md:text-sm font-bold mt-2">
+                        {Math.round(item.vote_average)} / 10
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
