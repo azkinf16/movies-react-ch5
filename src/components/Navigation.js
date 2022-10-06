@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 function Navigation() {
+  const [data, setData] = useState([])
   const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setData(e.target.value)
+    console.log(data)
+  }
+
+  const onSubmit = () => {
+    navigate(`/search/${data}`)
+  }
 
   return (
     <div className="flex items-center justify-between py-5 px-10 z-10 absolute w-full">
@@ -18,8 +28,9 @@ function Navigation() {
           className="bg-transparent p-2 w-full focus:outline-none placeholder:text-white text-white"
           type="text"
           placeholder="What do you want to watch?"
+          onChange={(e) => handleChange(e)}
         />
-        <AiOutlineSearch size={25} style={{ color: "#FFFF" }} />
+        <AiOutlineSearch onClick={() => onSubmit()} size={25} className="text-white hover:text-red-400 cursor-pointer" />
       </div>
       <div>
         <button className="bg-transparent hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded-full mr-2">

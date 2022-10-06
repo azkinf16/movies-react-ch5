@@ -4,6 +4,7 @@ import Category from "./pages/Category";
 
 import DetailMovie from "./pages/DetailMovie";
 import Home from "./pages/Home";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/detail/:id" element={<DetailMovie />}/>
         <Route path="/category/:cat" element={<Category />}/>
+        <Route path="/search/:search" element={<Search />}/>
       </Routes>
     </div>
   );
