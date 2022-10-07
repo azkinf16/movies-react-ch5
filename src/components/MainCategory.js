@@ -60,14 +60,23 @@ function MainCategory() {
             >
               <img
                 className="w-full h-[630px] rounded-lg"
-                src={item.poster_path? `https://image.tmdb.org/t/p/original/${item.poster_path}` : unavailable}
+                src={
+                  item.poster_path
+                    ? `https://image.tmdb.org/t/p/original/${item.poster_path}`
+                    : unavailable
+                }
                 alt={item.name}
               />
               <div className="absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white rounded-lg">
                 <div className="flex justify-center items-end h-3/4 text-center">
-                  <p className="white-space-normal text-xs md:text-sm font-bold">
-                    {item.title}
-                  </p>
+                  <div>
+                    <p className="white-space-normal text-xs md:text-sm font-bold">
+                      {item.title}
+                    </p>
+                    <p className="white-space-normal text-xs md:text-sm font-bold mt-2">
+                      {Math.round(item.vote_average)} / 10
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
