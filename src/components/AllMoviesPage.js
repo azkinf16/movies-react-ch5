@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 function AllMoviesPage() {
+  const [page, setPage] = useState();
   const [data, setData] = useState();
   const navigate = useNavigate();
 
@@ -16,6 +19,7 @@ function AllMoviesPage() {
         params: {
           api_key: API_KEY,
           include_adult: false,
+          page: `${page}`,
         },
       });
       setData(res.data.results);
@@ -24,9 +28,16 @@ function AllMoviesPage() {
     }
   };
 
+  const handlePageChange = (page) => {
+    setPage(page);
+    window.scroll(0, 0);
+  };
+  
+  console.log(page)
+
   useEffect(() => {
     getData();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -76,6 +87,14 @@ function AllMoviesPage() {
             </div>
           ))}
       </div>
+      <Stack spacing={2} className="mx-10 my-10">
+        <Pagination
+          count={5}
+          variant="outlined"
+          color="primary"
+          onChange={(e) => handlePageChange(e.target.textContent)}
+        />
+      </Stack>
     </>
   );
 }
