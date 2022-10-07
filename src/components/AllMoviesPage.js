@@ -32,8 +32,6 @@ function AllMoviesPage() {
     setPage(page);
   };
 
-  console.log(page);
-
   useEffect(() => {
     getData();
     window.scroll(0, 0);
