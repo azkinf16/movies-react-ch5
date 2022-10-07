@@ -3,16 +3,16 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <footer class="text-center text-white bg-slate-100 mt-10">
-        <div class="container pt-9">
-          <div class="flex justify-center mb-9">
-            <a href="#!" class="mr-9 text-gray-800 hover:text-gray-500">
+      <footer className="text-center text-white bg-slate-100 mt-10">
+        <div className="container pt-9">
+          <div className="flex justify-center mb-9">
+            <a href="#!" className="mr-9 text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="facebook-f"
-                class="svg-inline--fa fa-facebook-f w-2.5"
+                className="svg-inline--fa fa-facebook-f w-2.5"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 320 512"
@@ -23,13 +23,13 @@ function Footer() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800 hover:text-gray-500">
+            <a href="#!" className="mr-9 text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="twitter"
-                class="svg-inline--fa fa-twitter w-4"
+                className="svg-inline--fa fa-twitter w-4"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -40,13 +40,13 @@ function Footer() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800 hover:text-gray-500">
+            <a href="#!" className="mr-9 text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="google"
-                class="svg-inline--fa fa-google w-3.5"
+                className="svg-inline--fa fa-google w-3.5"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 488 512"
@@ -57,13 +57,13 @@ function Footer() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800 hover:text-gray-500">
+            <a href="#!" className="mr-9 text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="instagram"
-                class="svg-inline--fa fa-instagram w-3.5"
+                className="svg-inline--fa fa-instagram w-3.5"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
@@ -74,13 +74,13 @@ function Footer() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800 hover:text-gray-500">
+            <a href="#!" className="mr-9 text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="linkedin-in"
-                class="svg-inline--fa fa-linkedin-in w-3.5"
+                className="svg-inline--fa fa-linkedin-in w-3.5"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
@@ -91,13 +91,13 @@ function Footer() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="text-gray-800 hover:text-gray-500">
+            <a href="#!" className="text-gray-800 hover:text-gray-500">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
                 data-icon="github"
-                class="svg-inline--fa fa-github w-4"
+                className="svg-inline--fa fa-github w-4"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 496 512"
@@ -111,10 +111,10 @@ function Footer() {
           </div>
         </div>
         <div
-          class="text-center text-gray-700 pb-4 mb-3"
+          className="text-center text-gray-700 pb-4 mb-3"
         >
           © 2022 Copyright :
-          <a class="text-gray-800 pl-1 hover:text-gray-500" href="#!">
+          <a className="text-gray-800 pl-1 hover:text-gray-500" href="#!">
             Azki Nurul Fajri
           </a>
         </div>
