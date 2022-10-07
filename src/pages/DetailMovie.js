@@ -1,5 +1,6 @@
 import React from "react";
 import Detail from "../components/Detail";
+import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 
 function DetailMovie() {
@@ -7,6 +8,7 @@ function DetailMovie() {
     <>
       <Navigation />
       <Detail />
+      <Footer />
     </>
   );
 }
