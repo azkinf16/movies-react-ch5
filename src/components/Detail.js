@@ -94,6 +94,7 @@ function Detail() {
     getCasts();
     getReviews();
     getVideos();
+    window.scroll(0, 0);
   }, [id]);
 
   const truncateString = (str, num) => {
@@ -103,11 +104,6 @@ function Detail() {
       return str;
     }
   };
-
-  console.log("details", details);
-  console.log("cast", cast);
-  console.log("reviews", review);
-  console.log("video", video);
 
   return (
     <>

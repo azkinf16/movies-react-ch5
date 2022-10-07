@@ -27,10 +27,9 @@ function SearchPage() {
     }
   };
 
-  console.log("data", data);
-
   useEffect(() => {
     getSearch();
+    window.scroll(0, 0);
   }, [search]);
 
   return (

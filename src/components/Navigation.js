@@ -8,7 +8,6 @@ function Navigation() {
 
   const handleChange = (e) => {
     setData(e.target.value)
-    console.log(data)
   }
 
   const onSubmit = () => {
