@@ -20,8 +20,10 @@ function Detail() {
 
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "15a77a373cab542d1f99af813fbc9979";
-  const noPicture = "https://upload.wikimedia.org/wikipedia/commons/f/f9/No-image-available.jpg"
-  const noData = "https://financialadvisors.com/media/no-images/nodata-found.png"
+  const noPicture =
+    "https://upload.wikimedia.org/wikipedia/commons/f/f9/No-image-available.jpg";
+  const noData =
+    "https://financialadvisors.com/media/no-images/nodata-found.png";
 
   const getDetails = async () => {
     try {
@@ -104,7 +106,10 @@ function Detail() {
                 );
               })}
           </div>
-          <p className="text-white text-base font-normal pt-8 pl-1">
+          <p className="text-white pt-8 pl-1 font-semibold">
+            Release at {details.release_date}
+          </p>
+          <p className="text-white text-base font-normal pt-3 pl-1">
             {truncateString(details.overview, 400)}
           </p>
           <div className="flex pt-5 pl-1 text-base items-center">
@@ -130,27 +135,36 @@ function Detail() {
           modules={[FreeMode]}
           className="mySwiper"
         >
-          {cast.length? cast.length >= 0 &&
+          {cast.length ? (
+            cast.length >= 0 &&
             cast.map((item) => (
               <SwiperSlide key={item.cast_id}>
                 <div className="w-full inline-block cursor-pointer relative p-2">
                   <img
                     className="w-full h-full rounded-lg"
-                    src={item.profile_path? `https://image.tmdb.org/t/p/original/${item.profile_path}` : noPicture}
+                    src={
+                      item.profile_path
+                        ? `https://image.tmdb.org/t/p/original/${item.profile_path}`
+                        : noPicture
+                    }
                     alt={item.name}
                   />
                   <h1 className="pt-4 pb-1 font-bold text-xl">{item.name}</h1>
                   <h2 className="text-sm text-gray-500">{item.character}</h2>
                 </div>
               </SwiperSlide>
-            )) : <img src={noData} />}
+            ))
+          ) : (
+            <img src={noData} className="mx-auto" />
+          )}
         </Swiper>
       </div>
       <div className="pt-8 mx-11 pb-7 text-center">
         <h1 className="text-3xl font-bold">What People Says ?</h1>
       </div>
       <div className="mx-10 pt-10 pb-10 flex justify-evenly">
-        {review.length? review.length >= 0 &&
+        {review.length ? (
+          review.length >= 0 &&
           review.map((item) => (
             <div className="max-w-lg h-full">
               <div className="border border-gray-400 rounded-lg p-4 flex flex-col justify-between leading-normal">
@@ -185,7 +199,10 @@ function Detail() {
                 </div>
               </div>
             </div>
-          )) : <img src={noData}/>}
+          ))
+        ) : (
+          <img src={noData} />
+        )}
       </div>
     </>
   );
