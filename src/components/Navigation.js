@@ -16,7 +16,7 @@ function Navigation() {
   }
 
   return (
-    <div className="flex items-center justify-between py-5 px-10 z-10 absolute w-full">
+    <div className="flex items-center justify-between pt-7 px-10 z-10 absolute w-full">
       <img
         src="https://movielist-react-app.netlify.app/static/media/Logo.eeba5c17ddf85f2145e83dd963662921.svg"
         alt="logo"
