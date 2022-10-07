@@ -32,8 +32,8 @@ function AllMoviesPage() {
     setPage(page);
     window.scroll(0, 0);
   };
-  
-  console.log(page)
+
+  console.log(page);
 
   useEffect(() => {
     getData();
@@ -52,8 +52,18 @@ function AllMoviesPage() {
           <h1 className="text-5xl font-bold text-white">All Movies</h1>
         </div>
       </div>
-      <div className="mt-24 mx-11">
-        <h1 className="text-3xl font-bold">Result of All Movies</h1>
+      <div className="mt-24 mx-11 flex items-end justify-between">
+        <h1 className="text-4xl font-bold">Result of All Movies</h1>
+        <Stack spacing={2} className="">
+          <Pagination
+            count={5}
+            variant="outlined"
+            color="primary"
+            onChange={(e) => handlePageChange(e.target.textContent)}
+            hideNextButton
+            hidePrevButton
+          />
+        </Stack>
       </div>
       <div className="grid gap-6 grid-cols-4 mx-9 mt-12">
         {data &&
@@ -87,14 +97,6 @@ function AllMoviesPage() {
             </div>
           ))}
       </div>
-      <Stack spacing={2} className="mx-10 my-10">
-        <Pagination
-          count={5}
-          variant="outlined"
-          color="primary"
-          onChange={(e) => handlePageChange(e.target.textContent)}
-        />
-      </Stack>
     </>
   );
 }
