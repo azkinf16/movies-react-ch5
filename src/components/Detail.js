@@ -16,6 +16,7 @@ function Detail() {
   const [details, setDetails] = useState([]);
   const [cast, setCast] = useState([]);
   const [review, setReview] = useState([]);
+  const [video, setVideo] = useState([]);
   const { id } = useParams();
 
   const API_URL = "https://api.themoviedb.org/3";
@@ -67,10 +68,32 @@ function Detail() {
     }
   };
 
+  const getVideos = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/${id}/videos`, {
+        params: {
+          api_key: API_KEY,
+        },
+      });
+      setVideo(
+        res.data.results.find(
+          (video) =>
+            video.name === "Official Trailer" ||
+            video.name === "Official Teaser" ||
+            video.name === "Trailer" ||
+            video.name === "Teaser"
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getDetails();
     getCasts();
     getReviews();
+    getVideos();
   }, [id]);
 
   const truncateString = (str, num) => {
@@ -84,6 +107,7 @@ function Detail() {
   console.log("details", details);
   console.log("cast", cast);
   console.log("reviews", review);
+  console.log("video", video);
 
   return (
     <>
@@ -118,10 +142,12 @@ function Detail() {
               {Math.round(details.vote_average)} / 10
             </p>
           </div>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-10 rounded-full inline-flex items-center">
-            <AiOutlinePlayCircle className="mr-2" />
-            <span>Watch Trailer</span>
-          </button>
+          <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : ``}>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-10 rounded-full inline-flex items-center">
+              <AiOutlinePlayCircle className="mr-2" />
+              <span>Watch Trailer</span>
+            </button>
+          </a>
         </div>
       </div>
       <div className="pt-16 mx-11 flex items-center justify-between">

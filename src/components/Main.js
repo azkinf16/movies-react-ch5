@@ -16,10 +16,16 @@ import ButtonCategory from "./ButtonCategory";
 function Main() {
   const [trending, setTrending] = useState([]);
   const [popular, setPopular] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [videoss, setVideoss] = useState([]);
+  const [videosss, setVideosss] = useState([]);
   const navigate = useNavigate();
 
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "15a77a373cab542d1f99af813fbc9979";
+  const movie = trending[9];
+  const movie2 = trending[0];
+  const movie3 = trending[13];
 
   const getTrending = async () => {
     try {
@@ -49,9 +55,62 @@ function Main() {
     }
   };
 
+  const getVideos1 = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/616037/videos`, {
+        params: {
+          api_key: API_KEY,
+        },
+      });
+      setVideos(
+        res.data.results.find(({ name }) => name === "Official Trailer")
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getVideos2 = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/760161/videos`, {
+        params: {
+          api_key: API_KEY,
+        },
+      });
+      setVideoss(
+        res.data.results.find(({ name }) => name === "Official Trailer")
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getVideos3 = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/movie/766507/videos`, {
+        params: {
+          api_key: API_KEY,
+        },
+      });
+      setVideosss(
+        res.data.results.find(({ name }) => name === "Official Trailer")
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(videos);
+  console.log(videoss);
+  console.log(videosss);
+  console.log("trending", trending);
+
   useEffect(() => {
     getTrending();
     getPopular();
+    getVideos1();
+    getVideos2();
+    getVideos3();
   }, []);
 
   const truncateString = (str, num) => {
@@ -62,9 +121,7 @@ function Main() {
     }
   };
 
-  const movie = trending[Math.floor(Math.random() * trending.length)];
-  const movie2 = trending[Math.floor(Math.random() * trending.length)];
-  const movie3 = trending[Math.floor(Math.random() * trending.length)];
+
 
   return (
     <>
@@ -114,10 +171,12 @@ function Main() {
                   {Math.round(movie?.vote_average)} / 10
                 </p>
               </div>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2" />
-                <span>Watch Trailer</span>
-              </button>
+              <a href={`https://www.youtube.com/watch?v=${videos.key}`}>
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                  <AiOutlinePlayCircle className="mr-2" />
+                  <span>Watch Trailer</span>
+                </button>
+              </a>
             </div>
           </div>
           <div className="carousel-item float-left w-full">
@@ -140,10 +199,12 @@ function Main() {
                   {Math.round(movie2?.vote_average)} / 10
                 </p>
               </div>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2" />
-                <span>Watch Trailer</span>
-              </button>
+              <a href={`https://www.youtube.com/watch?v=${videoss.key}`}>
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                  <AiOutlinePlayCircle className="mr-2" />
+                  <span>Watch Trailer</span>
+                </button>
+              </a>
             </div>
           </div>
           <div className="carousel-item float-left w-full">
@@ -166,10 +227,12 @@ function Main() {
                   {Math.round(movie3?.vote_average)} / 10
                 </p>
               </div>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
-                <AiOutlinePlayCircle className="mr-2" />
-                <span>Watch Trailer</span>
-              </button>
+              <a href={`https://www.youtube.com/watch?v=${videosss.key}`}>
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 mt-10 rounded-full inline-flex items-center">
+                  <AiOutlinePlayCircle className="mr-2" />
+                  <span>Watch Trailer</span>
+                </button>
+              </a>
             </div>
           </div>
         </div>
