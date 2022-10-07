@@ -100,17 +100,13 @@ function Main() {
     }
   };
 
-  console.log(videos);
-  console.log(videoss);
-  console.log(videosss);
-  console.log("trending", trending);
-
   useEffect(() => {
     getTrending();
     getPopular();
     getVideos1();
     getVideos2();
     getVideos3();
+    window.scroll(0, 0);
   }, []);
 
   const truncateString = (str, num) => {
@@ -120,8 +116,6 @@ function Main() {
       return str;
     }
   };
-
-
 
   return (
     <>
@@ -239,7 +233,10 @@ function Main() {
       </div>
       <div className="mt-16 mx-11 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Popular Movies</h1>
-        <h6 className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer">
+        <h6
+          className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer"
+          onClick={() => navigate("/all-movies") & window.scroll(0, 0)}
+        >
           See All Movie
           <AiOutlineArrowRight className="ml-1" />
         </h6>
@@ -282,7 +279,10 @@ function Main() {
       </div>
       <div className="mt-24 mx-11 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Browser by Category</h1>
-        <h6 className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer">
+        <h6
+          className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer"
+          onClick={() => navigate("/all-movies")}
+        >
           See All Movie
           <AiOutlineArrowRight className="ml-1" />
         </h6>
