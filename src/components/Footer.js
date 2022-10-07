@@ -111,7 +111,7 @@ function Footer() {
           </div>
         </div>
         <div
-          class="text-center text-gray-700 p-4 bg-zinc-400"
+          class="text-center text-gray-700 pb-4 mb-3"
         >
           © 2022 Copyright :
           <a class="text-gray-800 pl-1 hover:text-gray-500" href="#!">
