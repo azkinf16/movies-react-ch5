@@ -30,13 +30,13 @@ function AllMoviesPage() {
 
   const handlePageChange = (page) => {
     setPage(page);
-    window.scroll(0, 0);
   };
 
   console.log(page);
 
   useEffect(() => {
     getData();
+    window.scroll(0, 0);
   }, [page]);
 
   return (

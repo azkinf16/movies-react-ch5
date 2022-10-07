@@ -235,7 +235,7 @@ function Main() {
         <h1 className="text-3xl font-bold">Popular Movies</h1>
         <h6
           className="text-red-600 hover:text-red-400 text-lg pt-2 flex items-center cursor-pointer"
-          onClick={() => navigate("/all-movies") & window.scroll(0, 0)}
+          onClick={() => navigate("/all-movies")}
         >
           See All Movie
           <AiOutlineArrowRight className="ml-1" />
