@@ -5,7 +5,7 @@ import ButtonCategory from "./ButtonCategory";
 
 function MainCategory() {
   const [category, setCategory] = useState();
-  const { cat } = useParams();
+  const { cat, genreId } = useParams();
   const navigate = useNavigate();
 
   const API_URL = "https://api.themoviedb.org/3";
@@ -14,10 +14,11 @@ function MainCategory() {
 
   const getCategory = async () => {
     try {
-      const res = await axios.get(`${API_URL}/search/movie`, {
+      const res = await axios.get(`${API_URL}/discover/movie`, {
         params: {
           api_key: API_KEY,
-          query: `${cat}`,
+          include_adult: false,
+          with_genres: `${genreId}`,
         },
       });
       setCategory(res.data.results);
@@ -28,7 +29,7 @@ function MainCategory() {
 
   useEffect(() => {
     getCategory();
-  }, [cat]);
+  }, [genreId]);
 
   console.log("category", category);
 
@@ -60,7 +61,7 @@ function MainCategory() {
               key={index}
             >
               <img
-                className="w-full h-[630px] rounded-lg"
+                className="w-full h-[655px] rounded-lg"
                 src={
                   item.poster_path
                     ? `https://image.tmdb.org/t/p/original/${item.poster_path}`
