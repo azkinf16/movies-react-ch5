@@ -98,9 +98,9 @@ function Detail() {
           <h1 className="text-5xl font-bold text-white">{details.title}</h1>
           <div className="flex pt-4">
             {details.genres &&
-              details.genres.map((item, id) => {
+              details.genres.map((item, index) => {
                 return (
-                  <p className="text-white mr-2 pl-1 font-light" key={item.id}>
+                  <p className="text-white mr-2 pl-1 font-light" key={index}>
                     {item.name}
                   </p>
                 );
@@ -137,8 +137,8 @@ function Detail() {
         >
           {cast.length ? (
             cast.length >= 0 &&
-            cast.map((item) => (
-              <SwiperSlide key={item.cast_id}>
+            cast.map((item, index) => (
+              <SwiperSlide key={index}>
                 <div className="w-full inline-block cursor-pointer relative p-2">
                   <img
                     className="w-full h-full rounded-lg"
@@ -165,8 +165,8 @@ function Detail() {
       <div className="mx-10 pt-10 pb-10 flex justify-evenly">
         {review.length ? (
           review.length >= 0 &&
-          review.map((item) => (
-            <div className="max-w-lg h-full">
+          review.map((item, index) => (
+            <div className="max-w-lg h-full" key={index}>
               <div className="border border-gray-400 rounded-lg p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
                   <p className="text-sm text-gray-600 flex items-center">

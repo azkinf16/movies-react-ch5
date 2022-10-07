@@ -53,10 +53,11 @@ function MainCategory() {
       <ButtonCategory />
       <div className="grid gap-6 grid-cols-3 mx-12">
         {category &&
-          category.map((item) => (
+          category.map((item, index) => (
             <div
               className="w-full cursor-pointer relative p-2"
               onClick={() => navigate(`/detail/${item.id}`)}
+              key={index}
             >
               <img
                 className="w-full h-[630px] rounded-lg"

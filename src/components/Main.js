@@ -189,9 +189,9 @@ function Main() {
           modules={[FreeMode]}
           className="mySwiper"
         >
-          {popular.map((item, id) => (
+          {popular.map((item, index) => (
             <SwiperSlide
-              key={item.id}
+              key={index}
               onClick={() => navigate(`/detail/${item.id}`)}
             >
               <div className="w-full inline-block cursor-pointer relative p-2">
@@ -233,9 +233,9 @@ function Main() {
           modules={[FreeMode]}
           className="mySwiper"
         >
-          {popular.map((item, id) => (
+          {popular.map((item, index) => (
             <SwiperSlide
-              key={item.id}
+              key={index}
               onClick={() => navigate(`/detail/${item.id}`)}
             >
               <div className="w-full inline-block cursor-pointer relative p-2">

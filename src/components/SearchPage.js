@@ -56,10 +56,11 @@ function SearchPage() {
       <div className="grid gap-6 grid-cols-3 mx-10 mb-10">
         {data?.length ? (
           data.length >= 0 &&
-          data.map((item) => (
+          data.map((item, index) => (
             <div
               className="w-full cursor-pointer relative p-2"
               onClick={() => navigate(`/detail/${item.id}`)}
+              key={index}
             >
               <img
                 className="w-full h-[630px] rounded-lg"
