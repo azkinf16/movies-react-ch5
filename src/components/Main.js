@@ -23,9 +23,9 @@ function Main() {
 
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "15a77a373cab542d1f99af813fbc9979";
-  const movie = trending[9];
-  const movie2 = trending[0];
-  const movie3 = trending[13];
+  const movie = trending[0];
+  const movie2 = trending[1];
+  const movie3 = trending[2];
 
   const getTrending = async () => {
     try {
@@ -57,7 +57,7 @@ function Main() {
 
   const getVideos1 = async () => {
     try {
-      const res = await axios.get(`${API_URL}/movie/616037/videos`, {
+      const res = await axios.get(`${API_URL}/movie/${movie.id}/videos`, {
         params: {
           api_key: API_KEY,
         },
@@ -72,7 +72,7 @@ function Main() {
 
   const getVideos2 = async () => {
     try {
-      const res = await axios.get(`${API_URL}/movie/760161/videos`, {
+      const res = await axios.get(`${API_URL}/movie/${movie2.id}/videos`, {
         params: {
           api_key: API_KEY,
         },
@@ -87,7 +87,7 @@ function Main() {
 
   const getVideos3 = async () => {
     try {
-      const res = await axios.get(`${API_URL}/movie/766507/videos`, {
+      const res = await axios.get(`${API_URL}/movie/${movie3.id}/videos`, {
         params: {
           api_key: API_KEY,
         },
@@ -107,7 +107,7 @@ function Main() {
     getVideos2();
     getVideos3();
     window.scroll(0, 0);
-  }, []);
+  }, [trending]);
 
   const truncateString = (str, num) => {
     if (str?.length > num) {
