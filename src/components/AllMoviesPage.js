@@ -10,7 +10,7 @@ function AllMoviesPage() {
   const navigate = useNavigate();
 
   const API_URL = "https://api.themoviedb.org/3";
-  const API_KEY = "15a77a373cab542d1f99af813fbc9979";
+  const API_KEY = "ae4dbdc73a2bf042cb271a0b322631d5";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
   const getData = async () => {
