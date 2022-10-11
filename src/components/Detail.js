@@ -116,7 +116,7 @@ function Detail() {
         />
         <div className="absolute w-1/2 top-[25%] p-5 ml-5">
           <h1 className="text-5xl font-bold text-white">{details.title}</h1>
-          <div className="flex pt-4">
+          <div className="flex">
             {details.genres &&
               details.genres.map((item, index) => {
                 return (
@@ -126,20 +126,20 @@ function Detail() {
                 );
               })}
           </div>
-          <p className="text-white pt-8 pl-1 font-semibold">
+          <p className="text-white pt-4 pl-1 font-semibold">
             Release at {details.release_date}
           </p>
-          <p className="text-white text-base font-normal pt-3 pl-1">
+          <p className="text-white text-base font-normal pl-1">
             {truncateString(details.overview, 400)}
           </p>
-          <div className="flex pt-5 pl-1 text-base items-center">
-            <BsStar className="text-yellow-500" />
+          <div className="flex pt-5 pl-1 ">
+            <BsStar className="text-yellow-500 mt-1" />
             <p className="text-white ml-4">
               {Math.round(details.vote_average)} / 10
             </p>
           </div>
           <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : ''}>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-10 rounded-full inline-flex items-center">
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-7 rounded-full inline-flex items-center">
               <AiOutlinePlayCircle className="mr-2" />
               <span>Watch Trailer</span>
             </button>
@@ -171,8 +171,8 @@ function Detail() {
                     }
                     alt={item.name}
                   />
-                  <h1 className="pt-4 pb-1 font-bold text-xl">{item.name}</h1>
-                  <h2 className="text-sm text-gray-500">{item.character}</h2>
+                  <h1 className="pt-4 font-bold text-xl">{item.name}</h1>
+                  <h2 className="text-xs text-gray-500">{item.character}</h2>
                 </div>
               </SwiperSlide>
             ))
