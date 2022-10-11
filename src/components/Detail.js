@@ -191,8 +191,8 @@ function Detail() {
             <div className="max-w-lg h-full" key={index}>
               <div className="border border-gray-400 rounded-lg p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
-                  <p className="text-sm text-gray-600 flex items-center">
-                    <BsStar className="text-yellow-500" />
+                  <p className="text-sm text-gray-600 flex">
+                    <BsStar className="text-yellow-500 mt-1" />
                     <p className="ml-2 pb-0.5">
                       {item.author_details.rating} / 10
                     </p>
