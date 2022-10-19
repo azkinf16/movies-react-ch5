@@ -14,7 +14,6 @@ import { BsStar } from "react-icons/bs";
 import ButtonCategory from "./ButtonCategory";
 
 function Main() {
-  const [trending, setTrending] = useState([]);
   const [popular, setPopular] = useState([]);
   const [videos, setVideos] = useState([]);
   const [videoss, setVideoss] = useState([]);
@@ -23,20 +22,6 @@ function Main() {
 
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "ae4dbdc73a2bf042cb271a0b322631d5";
-
-  const getTrending = async () => {
-    try {
-      const res = await axios.get(`${API_URL}/movie/popular`, {
-        params: {
-          api_key: API_KEY,
-          page: 1,
-        },
-      });
-      setTrending(res.data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getPopular = async () => {
     try {
@@ -98,7 +83,6 @@ function Main() {
   };
 
   useEffect(() => {
-    getTrending();
     getPopular();
     getVideos1();
     getVideos2();
