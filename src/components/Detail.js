@@ -138,7 +138,7 @@ function Detail() {
               {Math.round(details.vote_average)} / 10
             </p>
           </div>
-          <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : ""}>
+          <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : "https://www.youtube.com/watch?v=undefined"}>
             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-7 rounded-full inline-flex items-center">
               <AiOutlinePlayCircle className="mr-2" />
               <span>Watch Trailer</span>
