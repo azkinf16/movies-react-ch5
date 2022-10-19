@@ -106,8 +106,6 @@ function Main() {
     window.scroll(0, 0);
   }, []);
 
-  console.log(trending);
-
   const truncateString = (str, num) => {
     if (str?.length > num) {
       return str.slice(0, num) + "...";
